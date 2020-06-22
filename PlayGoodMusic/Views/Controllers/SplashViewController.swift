@@ -8,23 +8,42 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
-
+class SplashViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getMasterApi()
+        
+    }
 
-        // Do any additional setup after loading the view.
+}
+extension SplashViewController: Request {
+    func getMasterApi() {
+        LoadingView.showLoader(withTitle: "Please wait...", toView: self.view)
+        let path = RequestBuilder.EndPoint.master.path
+        if let url = URL(string: path) {
+            let request = URLRequest(url: url)
+            self.request(request, MasterResponseModel.self) { (result) in
+                switch result {
+                case.success(let model):
+                    LoadingView.hideLoader()
+                    if let masterUrlModel = model {
+                        MasterApiListHelper.shared.updateMasterUrlModel(masterUrlModel)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            if !Utils.isUserLoggedIn() {
+                                self.navigateToLogin()
+                            } else {
+                                self.navigateToHome()
+                            }
+                            
+                        }
+                    }
+                case .failure(let error):
+                    DispatchQueue.main.async {
+                        LoadingView.showError(withTitle: error.localizedDescription, toView: self.view)
+                    }
+                }
+            }
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

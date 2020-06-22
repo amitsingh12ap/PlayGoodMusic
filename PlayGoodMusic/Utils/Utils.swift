@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+class Utils {
+
+    class func updateUserStatus() {
+        UserDefaults.standard.set(true, forKey: "userLoggedIn")
+    }
+    class func isUserLoggedIn() -> Bool{
+        return UserDefaults.standard.bool(forKey: "userLoggedIn")
+    }
+    
+}
+
