@@ -10,9 +10,12 @@ import UIKit
 
 class SplashViewController: BaseViewController {
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()   
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
         self.getMasterApi()
-        
     }
 
 }
@@ -29,12 +32,7 @@ extension SplashViewController: Request {
                     if let masterUrlModel = model {
                         MasterApiListHelper.shared.updateMasterUrlModel(masterUrlModel)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            if !Utils.isUserLoggedIn() {
-                                self.navigateToLogin()
-                            } else {
-                                self.navigateToHome()
-                            }
-                            
+                            self.navigateToHome()
                         }
                     }
                 case .failure(let error):

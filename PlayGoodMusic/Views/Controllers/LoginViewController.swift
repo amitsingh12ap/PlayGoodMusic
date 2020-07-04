@@ -73,6 +73,14 @@ class LoginViewController: BaseViewController {
                     if isLoggedIn {
                         DispatchQueue.main.async {
                             Utils.updateUserStatus()
+                            
+                            self?.navigationController?.viewControllers.forEach({ (controller) in
+                                if controller.isKind(of: PlayerViewController.self) {
+                                    self?.navigationController?.popViewController(animated: true)
+                                    return
+                                }
+                            })
+                            
                             self?.navigateToHome()
                         }
                     } else {

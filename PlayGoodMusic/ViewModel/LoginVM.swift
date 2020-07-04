@@ -42,6 +42,7 @@ class LoginVM: Request {
                         completion(false, .apiError("Something Went Wrong"))
                         return
                     }
+                    Utils.saveUserInfo(model)
                     completion(true, nil)
                 case.failure(let error):
                     completion(false, error)

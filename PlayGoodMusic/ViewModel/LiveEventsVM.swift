@@ -10,6 +10,17 @@ import Foundation
 
 class LiveEventsVM: Request {
     var liveEvents: [Live]?
+    private var selectedEvent: Live?
+    private var selectedEventIndex: Int?
+    
+    func getSelectedEvent() -> (event :Live?,selectedIndex: Int?) {
+        return (self.selectedEvent,selectedEventIndex)
+    }
+    func updateCurrentSelectedEvent(liveEvent: Live?, withIndex index: Int) {
+        selectedEvent = liveEvent
+        selectedEventIndex = index
+    }
+    
     
     func getLiveEvents(completion: @escaping (Result<Bool?, ASError>)->Void) {
         if let url = URL(string: RequestBuilder.EndPoint.liveEvents("\(10)").path) {

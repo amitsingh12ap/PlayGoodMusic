@@ -20,7 +20,11 @@ struct RequestBuilder {
         case socialLogin
         case registration
         case forgetPassword
+        case contactUs
         case liveEvents(String)
+        case terms
+        case privacyPolicy
+        case userPackage(String,String)
         var path:String {
             switch self {
             case .master:
@@ -35,6 +39,14 @@ struct RequestBuilder {
                 return self.fixUrlString(MasterApiListHelper.shared.masterUrlInfo?.result?.social ?? "")+kToken
             case .liveEvents(let totalCount):
                 return self.fixUrlString("\(MasterApiListHelper.shared.masterUrlInfo?.result?.live ?? "")\(kToken)/live_offset/0/live_limit/\(totalCount)/device/iOS")
+            case .contactUs:
+                return self.fixUrlString("\(MasterApiListHelper.shared.masterUrlInfo?.result?.contact_us ?? "")\(kToken)")
+            case .terms :
+                return self.fixUrlString("\(MasterApiListHelper.shared.masterUrlInfo?.result?.t_c ?? "")\(kToken)")
+            case .privacyPolicy:
+                return self.fixUrlString("\(MasterApiListHelper.shared.masterUrlInfo?.result?.privacy_policy ?? "")\(kToken)")
+            case .userPackage(let userName, let userID):
+                return self.fixUrlString("\(MasterApiListHelper.shared.masterUrlInfo?.result?.subs_user_subscriptions ?? "")\(kToken)/device/iOS/uid/\(userID)/username/\(userName)")
             }
         }
         
@@ -105,7 +117,7 @@ struct DeviceInfo {
     }
     
     private static var details: [String: String] {
-        return ["make_model": UIDevice.current.modelName,"os": "iOS","screen_resolution": "\(UIDevice.current.screenWidth)*\(UIDevice.current.screenHeight)","push_device_token":"","device_type":"app","platform":"iOS","device_unique_id": UIDevice.current.identifierForVendor?.uuidString ?? "", "one_signal_id":"5f949ff2-1cd5-4fd6-8e2c-3771610592c0"]
+        return ["make_model": UIDevice.current.modelName,"os": "iOS","screen_resolution": "\(UIDevice.current.screenWidth)*\(UIDevice.current.screenHeight)","push_device_token":"fdsfdsh:RDFGGS43_YiSFzzaOrztVA7tooNKWmUrh2i","device_type":"app","platform":"iOS","device_unique_id": UIDevice.current.identifierForVendor?.uuidString ?? "", "one_signal_id":"5f949ff2-1cd5-4fd6-8e2c-3771610592c0"]
     }
     private static var otherDetails: [String: String] {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String

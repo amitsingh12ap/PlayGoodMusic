@@ -10,6 +10,10 @@
 		145E3E697DC9660A5AE53CC7 /* Pods_PlayGoodMusic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CEED45B359F82DF0611D3A2 /* Pods_PlayGoodMusic.framework */; };
 		3C64D0D67DE5E28E17B76D69 /* Pods_PlayGoodMusic_PlayGoodMusicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B4B79131748011BE80C43AE /* Pods_PlayGoodMusic_PlayGoodMusicUITests.framework */; };
 		9304BD8184EA4D91A0AEF025 /* Pods_PlayGoodMusicTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73D8F71BC5B330F6B110AAF /* Pods_PlayGoodMusicTests.framework */; };
+		B30CBB8A24B0D3BB00D7303A /* PlayerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CBB8924B0D3BB00D7303A /* PlayerVM.swift */; };
+		B30CBB8C24B0D51C00D7303A /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CBB8B24B0D51C00D7303A /* SubscriptionModel.swift */; };
+		B30CBB8E24B0F4B300D7303A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CBB8D24B0F4B300D7303A /* HeaderView.swift */; };
+		B30CBB9024B0F4C200D7303A /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B30CBB8F24B0F4C200D7303A /* HeaderView.xib */; };
 		B316617F249737BE00D061B3 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316617E249737BE00D061B3 /* RegistrationController.swift */; };
 		B31661852497DE8000D061B3 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31661842497DE8000D061B3 /* LoginVM.swift */; };
 		B31661872497E05500D061B3 /* Binding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31661862497E05500D061B3 /* Binding.swift */; };
@@ -17,6 +21,19 @@
 		B316618B2499116200D061B3 /* RegistrationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316618A2499116200D061B3 /* RegistrationVM.swift */; };
 		B316618D249915EA00D061B3 /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B316618C249915EA00D061B3 /* RegistrationModel.swift */; };
 		B31710B8249A84D600BF8FA0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B31710B7249A84D600BF8FA0 /* GoogleService-Info.plist */; };
+		B31715C324A6E7BE0072CD92 /* SideMenuOptionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31715C124A6E7BE0072CD92 /* SideMenuOptionsCell.swift */; };
+		B31715C424A6E7BE0072CD92 /* SideMenuOptionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31715C224A6E7BE0072CD92 /* SideMenuOptionsCell.xib */; };
+		B320107F24AFABAA007C5882 /* LiveEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320107E24AFABAA007C5882 /* LiveEventCell.swift */; };
+		B320108124B06B79007C5882 /* CommonWebController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320108024B06B79007C5882 /* CommonWebController.swift */; };
+		B320108524B075A0007C5882 /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320108424B075A0007C5882 /* ProfileVM.swift */; };
+		B320108924B07B68007C5882 /* ProfilePicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320108724B07B68007C5882 /* ProfilePicCell.swift */; };
+		B320108A24B07B68007C5882 /* ProfilePicCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B320108824B07B68007C5882 /* ProfilePicCell.xib */; };
+		B320108E24B07DD5007C5882 /* FormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320108C24B07DD5007C5882 /* FormCell.swift */; };
+		B320108F24B07DD5007C5882 /* FormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B320108D24B07DD5007C5882 /* FormCell.xib */; };
+		B320109124B08B2E007C5882 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320109024B08B2E007C5882 /* ProfileViewController.swift */; };
+		B320109324B0A01D007C5882 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B320109224B0A01C007C5882 /* RoundButton.swift */; };
+		B33D997624A780A100CE0EA9 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33D997524A780A100CE0EA9 /* PlayerViewController.swift */; };
+		B33D997824A7812400CE0EA9 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33D997724A7812400CE0EA9 /* VideoView.swift */; };
 		B360F16024968034001669E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360F15F24968034001669E6 /* AppDelegate.swift */; };
 		B360F16224968034001669E6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360F16124968034001669E6 /* SceneDelegate.swift */; };
 		B360F16424968034001669E6 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360F16324968034001669E6 /* BaseViewController.swift */; };
@@ -40,6 +57,7 @@
 		B3D460BC249E5FB200DA2F19 /* LiveEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D460BB249E5FB200DA2F19 /* LiveEventsViewController.swift */; };
 		B3F9E61324A0A7C500A174EF /* LiveEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F9E61224A0A7C500A174EF /* LiveEventsModel.swift */; };
 		B3F9E61524A0AFB700A174EF /* ImageCacheLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F9E61424A0AFB700A174EF /* ImageCacheLoader.swift */; };
+		B3F9E61924A117B500A174EF /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F9E61824A117B500A174EF /* SideMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +84,10 @@
 		6A4CBE237B161B5F9C4BA213 /* Pods-PlayGoodMusicTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayGoodMusicTests.release.xcconfig"; path = "Target Support Files/Pods-PlayGoodMusicTests/Pods-PlayGoodMusicTests.release.xcconfig"; sourceTree = "<group>"; };
 		811645445B2B29F9D42F155A /* Pods-PlayGoodMusic-PlayGoodMusicUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayGoodMusic-PlayGoodMusicUITests.debug.xcconfig"; path = "Target Support Files/Pods-PlayGoodMusic-PlayGoodMusicUITests/Pods-PlayGoodMusic-PlayGoodMusicUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A5F408B4DE22F256E65F857E /* Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig"; path = "Target Support Files/Pods-PlayGoodMusic-PlayGoodMusicUITests/Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig"; sourceTree = "<group>"; };
+		B30CBB8924B0D3BB00D7303A /* PlayerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVM.swift; sourceTree = "<group>"; };
+		B30CBB8B24B0D51C00D7303A /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
+		B30CBB8D24B0F4B300D7303A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		B30CBB8F24B0F4C200D7303A /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		B316617E249737BE00D061B3 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		B31661842497DE8000D061B3 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		B31661862497E05500D061B3 /* Binding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Binding.swift; sourceTree = "<group>"; };
@@ -73,6 +95,19 @@
 		B316618A2499116200D061B3 /* RegistrationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVM.swift; sourceTree = "<group>"; };
 		B316618C249915EA00D061B3 /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		B31710B7249A84D600BF8FA0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B31715C124A6E7BE0072CD92 /* SideMenuOptionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuOptionsCell.swift; sourceTree = "<group>"; };
+		B31715C224A6E7BE0072CD92 /* SideMenuOptionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuOptionsCell.xib; sourceTree = "<group>"; };
+		B320107E24AFABAA007C5882 /* LiveEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventCell.swift; sourceTree = "<group>"; };
+		B320108024B06B79007C5882 /* CommonWebController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebController.swift; sourceTree = "<group>"; };
+		B320108424B075A0007C5882 /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
+		B320108724B07B68007C5882 /* ProfilePicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePicCell.swift; sourceTree = "<group>"; };
+		B320108824B07B68007C5882 /* ProfilePicCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePicCell.xib; sourceTree = "<group>"; };
+		B320108C24B07DD5007C5882 /* FormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCell.swift; sourceTree = "<group>"; };
+		B320108D24B07DD5007C5882 /* FormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormCell.xib; sourceTree = "<group>"; };
+		B320109024B08B2E007C5882 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B320109224B0A01C007C5882 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		B33D997524A780A100CE0EA9 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		B33D997724A7812400CE0EA9 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		B360F15C24968034001669E6 /* PlayGoodMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayGoodMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B360F15F24968034001669E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B360F16124968034001669E6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +137,7 @@
 		B3D460BB249E5FB200DA2F19 /* LiveEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventsViewController.swift; sourceTree = "<group>"; };
 		B3F9E61224A0A7C500A174EF /* LiveEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventsModel.swift; sourceTree = "<group>"; };
 		B3F9E61424A0AFB700A174EF /* ImageCacheLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheLoader.swift; sourceTree = "<group>"; };
+		B3F9E61824A117B500A174EF /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		D2E9F5A711615F057F9B2935 /* Pods-PlayGoodMusicTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayGoodMusicTests.debug.xcconfig"; path = "Target Support Files/Pods-PlayGoodMusicTests/Pods-PlayGoodMusicTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D73D8F71BC5B330F6B110AAF /* Pods_PlayGoodMusicTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayGoodMusicTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE4F9E00BDBC198E11783F6D /* Pods-PlayGoodMusic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayGoodMusic.debug.xcconfig"; path = "Target Support Files/Pods-PlayGoodMusic/Pods-PlayGoodMusic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +192,26 @@
 				D73D8F71BC5B330F6B110AAF /* Pods_PlayGoodMusicTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B320108624B07B45007C5882 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B320109024B08B2E007C5882 /* ProfileViewController.swift */,
+				B320108B24B07DB5007C5882 /* Cells */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B320108B24B07DB5007C5882 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B320108724B07B68007C5882 /* ProfilePicCell.swift */,
+				B320108824B07B68007C5882 /* ProfilePicCell.xib */,
+				B320108C24B07DD5007C5882 /* FormCell.swift */,
+				B320108D24B07DD5007C5882 /* FormCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B360F15324968034001669E6 = {
@@ -240,6 +296,8 @@
 				B31661842497DE8000D061B3 /* LoginVM.swift */,
 				B316618A2499116200D061B3 /* RegistrationVM.swift */,
 				B3D460B9249E59C700DA2F19 /* LiveEventsVM.swift */,
+				B320108424B075A0007C5882 /* ProfileVM.swift */,
+				B30CBB8924B0D3BB00D7303A /* PlayerVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -251,6 +309,7 @@
 				B31661882497E55000D061B3 /* LoginModel.swift */,
 				B316618C249915EA00D061B3 /* RegistrationModel.swift */,
 				B3F9E61124A0A0D400A174EF /* LiveDataModels */,
+				B30CBB8B24B0D51C00D7303A /* SubscriptionModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,6 +331,10 @@
 				B360F1A924969095001669E6 /* LoginViewController.swift */,
 				B316617E249737BE00D061B3 /* RegistrationController.swift */,
 				B3D460BB249E5FB200DA2F19 /* LiveEventsViewController.swift */,
+				B3F9E61824A117B500A174EF /* SideMenuViewController.swift */,
+				B33D997524A780A100CE0EA9 /* PlayerViewController.swift */,
+				B320108024B06B79007C5882 /* CommonWebController.swift */,
+				B320108624B07B45007C5882 /* Profile */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -279,6 +342,8 @@
 		B360F1962496813B001669E6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B320109224B0A01C007C5882 /* RoundButton.swift */,
+				B33D997724A7812400CE0EA9 /* VideoView.swift */,
 				B360F19724968149001669E6 /* Validators.swift */,
 				B360F1A324968671001669E6 /* LoadingView.swift */,
 				B360F1A124968487001669E6 /* Utils.swift */,
@@ -302,6 +367,11 @@
 			children = (
 				B36B5B16249E6DCA00B56478 /* ListTableCell.swift */,
 				B36B5B17249E6DCA00B56478 /* ListTableCell.xib */,
+				B31715C124A6E7BE0072CD92 /* SideMenuOptionsCell.swift */,
+				B31715C224A6E7BE0072CD92 /* SideMenuOptionsCell.xib */,
+				B320107E24AFABAA007C5882 /* LiveEventCell.swift */,
+				B30CBB8D24B0F4B300D7303A /* HeaderView.swift */,
+				B30CBB8F24B0F4C200D7303A /* HeaderView.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -417,9 +487,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B31715C424A6E7BE0072CD92 /* SideMenuOptionsCell.xib in Resources */,
+				B320108F24B07DD5007C5882 /* FormCell.xib in Resources */,
 				B360F16C24968037001669E6 /* LaunchScreen.storyboard in Resources */,
 				B360F16924968037001669E6 /* Assets.xcassets in Resources */,
+				B320108A24B07B68007C5882 /* ProfilePicCell.xib in Resources */,
 				B36B5B19249E6DCA00B56478 /* ListTableCell.xib in Resources */,
+				B30CBB9024B0F4C200D7303A /* HeaderView.xib in Resources */,
 				B360F16724968034001669E6 /* Main.storyboard in Resources */,
 				B31710B8249A84D600BF8FA0 /* GoogleService-Info.plist in Resources */,
 			);
@@ -587,22 +661,36 @@
 				B3D460BA249E59C700DA2F19 /* LiveEventsVM.swift in Sources */,
 				B360F1AA24969095001669E6 /* LoginViewController.swift in Sources */,
 				B316618B2499116200D061B3 /* RegistrationVM.swift in Sources */,
+				B30CBB8A24B0D3BB00D7303A /* PlayerVM.swift in Sources */,
+				B30CBB8E24B0F4B300D7303A /* HeaderView.swift in Sources */,
 				B3F9E61324A0A7C500A174EF /* LiveEventsModel.swift in Sources */,
+				B31715C324A6E7BE0072CD92 /* SideMenuOptionsCell.swift in Sources */,
+				B320109124B08B2E007C5882 /* ProfileViewController.swift in Sources */,
 				B360F19B24968152001669E6 /* RequestBuilder.swift in Sources */,
+				B33D997624A780A100CE0EA9 /* PlayerViewController.swift in Sources */,
 				B360F19C24968152001669E6 /* Request.swift in Sources */,
 				B360F19824968149001669E6 /* Validators.swift in Sources */,
 				B31661892497E55000D061B3 /* LoginModel.swift in Sources */,
 				B360F1A824968D65001669E6 /* MasterApiListHelper.swift in Sources */,
+				B320108524B075A0007C5882 /* ProfileVM.swift in Sources */,
+				B320109324B0A01D007C5882 /* RoundButton.swift in Sources */,
+				B30CBB8C24B0D51C00D7303A /* SubscriptionModel.swift in Sources */,
 				B316618D249915EA00D061B3 /* RegistrationModel.swift in Sources */,
 				B360F16424968034001669E6 /* BaseViewController.swift in Sources */,
 				B3D460BC249E5FB200DA2F19 /* LiveEventsViewController.swift in Sources */,
+				B33D997824A7812400CE0EA9 /* VideoView.swift in Sources */,
+				B320107F24AFABAA007C5882 /* LiveEventCell.swift in Sources */,
+				B320108E24B07DD5007C5882 /* FormCell.swift in Sources */,
 				B360F16024968034001669E6 /* AppDelegate.swift in Sources */,
 				B360F19E249681F1001669E6 /* SplashViewController.swift in Sources */,
 				B36B5B18249E6DCA00B56478 /* ListTableCell.swift in Sources */,
+				B3F9E61924A117B500A174EF /* SideMenuViewController.swift in Sources */,
 				B360F16224968034001669E6 /* SceneDelegate.swift in Sources */,
 				B3F9E61524A0AFB700A174EF /* ImageCacheLoader.swift in Sources */,
 				B360F1A224968487001669E6 /* Utils.swift in Sources */,
 				B360F1A624968ABC001669E6 /* MasterResponseModel.swift in Sources */,
+				B320108124B06B79007C5882 /* CommonWebController.swift in Sources */,
+				B320108924B07B68007C5882 /* ProfilePicCell.swift in Sources */,
 				B360F1A424968671001669E6 /* LoadingView.swift in Sources */,
 				B31661872497E05500D061B3 /* Binding.swift in Sources */,
 				B316617F249737BE00D061B3 /* RegistrationController.swift in Sources */,
@@ -779,17 +867,20 @@
 			baseConfigurationReference = EE4F9E00BDBC198E11783F6D /* Pods-PlayGoodMusic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = H7S27MGJS8;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-.PlayGoodMusic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.zambia.contacttracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "zambia contact tracer";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -798,17 +889,20 @@
 			baseConfigurationReference = 10B9D13B36A5F0122B108354 /* Pods-PlayGoodMusic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = H7S27MGJS8;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-.PlayGoodMusic";
+				PRODUCT_BUNDLE_IDENTIFIER = com.airtel.zambia.contacttracer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "zambia contact tracer";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -866,6 +960,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H7S27MGJS8;
 				INFOPLIST_FILE = PlayGoodMusicUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -887,6 +982,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = H7S27MGJS8;
 				INFOPLIST_FILE = PlayGoodMusicUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

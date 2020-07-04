@@ -9,13 +9,18 @@
 import UIKit
 import SDWebImage
 
-class LiveEventsViewController: BaseViewController {
+class LiveEventsViewController: BaseViewController,SideMenuDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
+    private var selectedMenu: SideMenuOptions?
     var model = LiveEventsVM()
+    var sideMenuController: SideMenuViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showForceSubscribeAlert), name: Notification.Name(kForceSubscription), object: nil)
+        
         self.tableView.register(UINib(nibName: "ListTableCell", bundle: Bundle.main), forCellReuseIdentifier: "liveCell")
         self.model.getLiveEvents { (result) in
             switch result {
@@ -35,19 +40,70 @@ class LiveEventsViewController: BaseViewController {
             }
         }
     }
+    
+    //Are you sure want to logout
+    @objc func showForceSubscribeAlert(_ notification: NSNotification) {
+        let channelData = notification.userInfo
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.showConfirmationAlert("Message", "You are not subscribed to watch \(channelData?["channelName"] ?? ""). Please visit www.playgoodmusic.com/ to subscribe") { (status) in
+                if status {
+                    if let url = URL(string: "https://www.playgoodmusic.com") {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            }
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func menuAction() {
+        print("menu from home")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.sideMenuController = storyboard.instantiateViewController(withIdentifier: "sideMenu") as? SideMenuViewController
+        sideMenuController?.delegate = self
+        let window = UIApplication.shared.windows.first!
+        if let sideMenuView = sideMenuController?.view {
+            window.addSubview(sideMenuView);
+        }
+        
+     
     }
-    */
+    private func removeSideMenu() {
+        let window = UIApplication.shared.windows.first!
+        for view in window.subviews {
+            if view == self.sideMenuController?.view {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    func dismissSideMenu() {
+        self.removeSideMenu()
+    }
+    func navigateToScreen(screenName: SideMenuOptions?) {
+        self.removeSideMenu()
+        self.selectedMenu = screenName
+        switch screenName {
+        case .account:
+            self.performSegue(withIdentifier: "toProfile", sender: self)
+        case.privacy,.terms:
+            self.performSegue(withIdentifier: "toWeb", sender: self)
+        case .signin:
+            self.performSegue(withIdentifier: "toLogin", sender: self)
+        case .signout:
+            self.showConfirmationAlert("Confirm", "Are you sure want to logout?") { (status) in
+                if status {
+                    Utils.updateUserStatus(false)
+                    self.navigateToLogin()
+                }
+            }
+            
+        default:
+            break
+        }
+    }
 
 }
 extension LiveEventsViewController: UITableViewDataSource {
@@ -72,7 +128,7 @@ extension LiveEventsViewController: UITableViewDataSource {
         }
         cell.eventType.text = liveEvnt?.mediaType.rawValue
         cell.thumnail.image = UIImage(named: "load")
-        cell.eventInfoLbl.attributedText = NSAttributedString(string: "\(liveEvnt?.des ?? "")\n\(liveEvnt?.publishDate ?? "")")
+        cell.eventInfoLbl.attributedText = NSAttributedString(string: "\(liveEvnt?.des ?? "")\n\(Utils.getDate(dateString: liveEvnt?.publishDate ?? "") ?? "")")
         return cell
     }
     
@@ -110,5 +166,41 @@ extension LiveEventsViewController: UITableViewDataSource {
 
     func sortAscByLength(list: [String]) -> [String] {
         return list.sorted(by: { $0.count < $1.count })
+    }
+    
+}
+
+extension LiveEventsViewController : UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let playerData = self.model.liveEvents?[indexPath.row]
+        self.model.updateCurrentSelectedEvent(liveEvent: playerData, withIndex: indexPath.row)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "toPlayer", sender: nil)
+        }
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWeb" {
+            var url: String?
+            let webController = segue.destination as? CommonWebController
+            switch self.selectedMenu {
+            case .privacy:
+                url = RequestBuilder.EndPoint.privacyPolicy.path
+            case .terms:
+                url = RequestBuilder.EndPoint.terms.path
+            default:
+                break
+            }
+            webController?.title = self.selectedMenu?.rawValue
+            webController?.htmlString = url
+        } else if segue.identifier == "toProfile" {
+            //
+        } else {
+            let playerView = segue.destination as? PlayerViewController
+            playerView?.urlString = self.model.getSelectedEvent().event?.url
+            playerView?.selectedIndex = self.model.getSelectedEvent().selectedIndex
+            playerView?.videoList = self.model.liveEvents
+        }
+        
     }
 }

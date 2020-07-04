@@ -12,6 +12,11 @@ struct LoginModel: Codable {
 //    let result: String?
     let loginResponseResult: LoginResponseResult?
     let error: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case error,code
+        case loginResponseResult = "result"
+    }
 }
 
 // MARK: - Result
