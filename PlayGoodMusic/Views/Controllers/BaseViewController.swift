@@ -100,7 +100,6 @@ extension BaseViewController: UINavigationControllerDelegate {
             self.navigationController?.navigationBar.isHidden = true
             self.navigationItem.setHidesBackButton(true, animated: true);
         } else {
-            self.navigationItem.setHidesBackButton(true, animated: true);
             self.navigationController?.navigationBar.isHidden = false
         }
         if viewController.isKind(of: PlayerViewController.self) {
@@ -111,7 +110,7 @@ extension BaseViewController: UINavigationControllerDelegate {
         // verify Back button
         if viewController.isKind(of: LoginViewController.self) {
             self.addSignupButton()
-            self.navigationItem.setHidesBackButton(true, animated: true);
+            self.navigationItem.setHidesBackButton(false, animated: true);
         }
         else if viewController.isKind(of: LiveEventsViewController.self) {
             addMusicImage()

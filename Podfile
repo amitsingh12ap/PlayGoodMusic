@@ -6,10 +6,8 @@ target 'Play Good Music' do
   use_frameworks!
 
   # Pods for Play Good Music
-	pod 'ReachabilitySwift'
 	pod 'IQKeyboardManager', '~> 6.5'
 	pod 'TNSocialNetWorkLogin'
-	pod 'SDWebImage', '~> 5.8'
 	pod 'google-cast-sdk'
   target 'Play Good MusicTests' do
     inherit! :search_paths

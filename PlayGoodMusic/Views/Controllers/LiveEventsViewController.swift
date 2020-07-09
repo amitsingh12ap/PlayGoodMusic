@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 class LiveEventsViewController: BaseViewController,SideMenuDelegate {
     

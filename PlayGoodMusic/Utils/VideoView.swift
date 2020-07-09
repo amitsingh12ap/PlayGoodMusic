@@ -11,6 +11,7 @@ import AVFoundation
 protocol VideoViewDelegate: class {
     func updatePlayerStatus(status: AVPlayerItem.Status)
     func updateCurrentTime(_ time: CMTime)
+    func playerDidFinishedPlaying()
     
 }
 class VideoView: UIView {
@@ -57,10 +58,14 @@ class VideoView: UIView {
     private func setUpPlayerItem(with asset: AVAsset) {
         playerItem = AVPlayerItem(asset: asset)
         playerItem?.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: &playerItemContext)
+        NotificationCenter.default.addObserver(self, selector: #selector(playerDidFinishPlaying), name: .AVPlayerItemDidPlayToEndTime, object: nil)
 
         DispatchQueue.main.async { [weak self] in
             self?.player = AVPlayer(playerItem: self?.playerItem!)
         }
+    }
+    @objc private func playerDidFinishPlaying(note: NSNotification) {
+        self.delegate?.playerDidFinishedPlaying()
     }
     private func addPeriodicTimeObserver() {
         // Notify every half second

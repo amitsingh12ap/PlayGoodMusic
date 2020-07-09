@@ -54,12 +54,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
         self.videoView.delegate = self
         playVideo()
         self.addTapGesture()
-        if isLive {
-//            self.seekBar.isHidden = true
-        }
-        
         self.view.bringSubviewToFront(self.backButton)
-        
         self.getUserActivePacks()
     }
     private func createChromeCastMediaContainer() {
@@ -85,8 +80,6 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     func updateControlBarsVisibility(shouldAppear: Bool = false) {
         if shouldAppear {
             mediaView!.isHidden = false
-        } else {
-            //            mediaView!.isHidden = true
         }
         UIView.animate(withDuration: 1, animations: { () -> Void in
             self.view.layoutIfNeeded()
@@ -268,10 +261,12 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     }
     
     @IBAction func cast(_ sender: Any) {
-        self.configureMetaData()
+        
     }
 }
 extension PlayerViewController : VideoViewDelegate {
+    func playerDidFinishedPlaying() {
+    }
     
     
     func updatePlayerStatus(status: AVPlayerItem.Status) {
@@ -387,24 +382,30 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
 extension PlayerViewController {
     func configureMetaData() {
         if GCKCastContext.sharedInstance().castState == .connected {
-            print("connected")
-            let url = URL.init(string: "https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/1080/Big_Buck_Bunny_1080_10s_20MB.mp4")
+            guard  let selectedUrlString = self.urlString else {
+                return
+            }
+            let url = URL.init(string: selectedUrlString)
             guard let mediaURL = url else {
                 print("invalid mediaURL")
                 return
             }
-            
+            let currentVIdeo = self.videoList?[self.selectedIndex ?? 0]
             let metadata = GCKMediaMetadata()
-            metadata.setString("sddsfasfdas", forKey: kGCKMetadataKeyTitle)
-            metadata.setString("sadfasfasfdasfd",
+            metadata.setString(currentVIdeo?.title ?? "", forKey: kGCKMetadataKeyTitle)
+            metadata.setString(currentVIdeo?.des ?? "",
                                forKey: kGCKMetadataKeySubtitle)
-            metadata.addImage(GCKImage(url: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg")!,
-                                       width: 480,
-                                       height: 360))
             
+            if let thumbnailImage = currentVIdeo?.thumbnail.medium {
+                if let thumbnailUrl = URL(string: thumbnailImage) {
+                    metadata.addImage(GCKImage(url: thumbnailUrl,
+                    width: 480,
+                    height: 360))
+                }
+            }
             let mediaInfoBuilder = GCKMediaInformationBuilder.init(contentURL: mediaURL)
             mediaInfoBuilder.streamType = GCKMediaStreamType.buffered;
-            mediaInfoBuilder.contentType = "video/mp4"
+            mediaInfoBuilder.contentType = "video/m3u8"
             mediaInfoBuilder.metadata = metadata
             mediaInfoBuilder.startAbsoluteTime = .greatestFiniteMagnitude
             let mediaInformation = mediaInfoBuilder.build()
@@ -423,6 +424,7 @@ extension PlayerViewController {
 extension PlayerViewController: GCKRequestDelegate,GCKUIMiniMediaControlsViewControllerDelegate {
     func requestDidComplete(_ request: GCKRequest) {
         print("request completed")
+        self.configureMetaData()
     }
     
     func request(_ request: GCKRequest, didAbortWith abortReason: GCKRequestAbortReason) {

@@ -910,7 +910,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Play Good MusicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1.7;
 				DEVELOPMENT_TEAM = JSN8GHH7P2;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -919,7 +919,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.playgoodmusic.pgm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pgm.playgoodmusic;
 				PRODUCT_NAME = "Play Good Music";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -933,9 +933,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Play Good MusicRelease.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.7;
 				DEVELOPMENT_TEAM = JSN8GHH7P2;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -944,9 +944,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.playgoodmusic.pgm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pgm.playgoodmusic;
 				PRODUCT_NAME = "Play Good Music";
-				PROVISIONING_PROFILE_SPECIFIER = pgmDist;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
