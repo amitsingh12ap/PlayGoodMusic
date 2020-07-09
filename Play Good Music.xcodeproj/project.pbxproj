@@ -90,6 +90,18 @@
 		A5F408B4DE22F256E65F857E /* Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig"; path = "Target Support Files/Pods-PlayGoodMusic-PlayGoodMusicUITests/Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A619CAD0E94ABCD83BC1E0E2 /* Pods-Play Good Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play Good Music.debug.xcconfig"; path = "Target Support Files/Pods-Play Good Music/Pods-Play Good Music.debug.xcconfig"; sourceTree = "<group>"; };
 		B30B751524B6ECBF00FDDA46 /* CommonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonController.swift; sourceTree = "<group>"; };
+		B30B751724B6F10900FDDA46 /* Play Good MusicRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Play Good MusicRelease.entitlements"; sourceTree = "<group>"; };
+		B30B751824B6F1D800FDDA46 /* Play Good MusicDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Play Good MusicDebug.entitlements"; sourceTree = "<group>"; };
+		B30B751924B6F45E00FDDA46 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		B30B751B24B6F46600FDDA46 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		B30B751D24B6F46F00FDDA46 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		B30B751F24B6F47900FDDA46 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		B30B752524B6F53F00FDDA46 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		B30B752724B6F54600FDDA46 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		B30B752924B6F54C00FDDA46 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B30B752B24B6F55800FDDA46 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		B30B752D24B6F55F00FDDA46 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		B30B752F24B6F57000FDDA46 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B30CBB8924B0D3BB00D7303A /* PlayerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVM.swift; sourceTree = "<group>"; };
 		B30CBB8B24B0D51C00D7303A /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
 		B30CBB8D24B0F4B300D7303A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -201,6 +213,16 @@
 		7A02B25979A4007DAAE7B481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B30B752F24B6F57000FDDA46 /* Foundation.framework */,
+				B30B752D24B6F55F00FDDA46 /* CoreText.framework */,
+				B30B752B24B6F55800FDDA46 /* CoreMedia.framework */,
+				B30B752924B6F54C00FDDA46 /* CoreGraphics.framework */,
+				B30B752724B6F54600FDDA46 /* CoreData.framework */,
+				B30B752524B6F53F00FDDA46 /* CoreBluetooth.framework */,
+				B30B751F24B6F47900FDDA46 /* CFNetwork.framework */,
+				B30B751D24B6F46F00FDDA46 /* AVFoundation.framework */,
+				B30B751B24B6F46600FDDA46 /* AudioToolbox.framework */,
+				B30B751924B6F45E00FDDA46 /* Accelerate.framework */,
 				EE894BA037DCBCB91BFC753B /* Pods_Play_Good_Music.framework */,
 				59A44A0FA65765037CE0CDA6 /* Pods_Play_Good_Music_Play_Good_MusicUITests.framework */,
 				37A62EEE0D50D7409E72086D /* Pods_Play_Good_MusicTests.framework */,
@@ -231,6 +253,8 @@
 		B360F15324968034001669E6 = {
 			isa = PBXGroup;
 			children = (
+				B30B751824B6F1D800FDDA46 /* Play Good MusicDebug.entitlements */,
+				B30B751724B6F10900FDDA46 /* Play Good MusicRelease.entitlements */,
 				B360F15E24968034001669E6 /* PlayGoodMusic */,
 				B360F17524968038001669E6 /* PlayGoodMusicTests */,
 				B360F18024968038001669E6 /* PlayGoodMusicUITests */,
@@ -883,6 +907,7 @@
 			baseConfigurationReference = A619CAD0E94ABCD83BC1E0E2 /* Pods-Play Good Music.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Play Good MusicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
@@ -907,6 +932,7 @@
 			baseConfigurationReference = E0B7DBAE3AAC0C48EA73926E /* Pods-Play Good Music.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Play Good MusicRelease.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1.0;

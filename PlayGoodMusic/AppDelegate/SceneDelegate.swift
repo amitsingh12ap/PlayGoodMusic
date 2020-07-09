@@ -8,18 +8,43 @@
 
 import UIKit
 import IQKeyboardManager
+import GoogleCast
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+class SceneDelegate: UIResponder, UIWindowSceneDelegate,GCKLoggerDelegate {
 
     var window: UIWindow?
-
+    let kReceiverAppID = kGCKDefaultMediaReceiverApplicationID
+    let kDebugLoggingEnabled = true
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
         IQKeyboardManager.shared().isEnabled = true
+        
+        let castoptions = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria(applicationID: kReceiverAppID))
+        castoptions.physicalVolumeButtonsWillControlDeviceVolume = true
+        GCKCastContext.setSharedInstanceWith(castoptions)
+
+
+        let logFilter = GCKLoggerFilter()
+        logFilter.minimumLevel = .verbose
+        GCKLogger.sharedInstance().filter = logFilter
+        GCKLogger.sharedInstance().delegate = self
+
         guard let _ = (scene as? UIWindowScene) else { return }
+    }
+    
+    // MARK: - GCKLoggerDelegate
+
+    func logMessage(_ message: String,
+                    at level: GCKLoggerLevel,
+                    fromFunction function: String,
+                    location: String) {
+      if (kDebugLoggingEnabled) {
+        print(function + " - " + message)
+      }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleCast
 
 let kForceSubscription = "subscribe_now"
 class BaseViewController: UIViewController {

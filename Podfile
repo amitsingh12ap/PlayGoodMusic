@@ -10,6 +10,7 @@ target 'Play Good Music' do
 	pod 'IQKeyboardManager', '~> 6.5'
 	pod 'TNSocialNetWorkLogin'
 	pod 'SDWebImage', '~> 5.8'
+	pod 'google-cast-sdk'
   target 'Play Good MusicTests' do
     inherit! :search_paths
     # Pods for testing

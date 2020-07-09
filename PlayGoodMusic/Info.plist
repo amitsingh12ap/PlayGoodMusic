@@ -78,6 +78,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need to access your bluetooth to cast video on chrome cast</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to capture your pictures to set your profile pic</string>
 	<key>NSPhotoLibraryUsageDescription</key>
