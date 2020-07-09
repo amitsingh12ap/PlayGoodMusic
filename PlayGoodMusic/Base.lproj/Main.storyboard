@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="edH-yb-16U">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="edH-yb-16U">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -174,6 +174,7 @@
                         <segue destination="8Xn-NU-Mwh" kind="show" identifier="toPlayer" id="8bq-i4-MfQ"/>
                         <segue destination="vh6-ak-CDm" kind="show" identifier="toProfile" id="mrM-fT-CIV"/>
                         <segue destination="4tR-Wg-yLv" kind="show" identifier="toLogin" id="rXJ-7y-dx2"/>
+                        <segue destination="nnl-Kh-bOX" kind="show" identifier="toWeb" id="CiT-Jh-kNz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbQ-bU-kq2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -558,6 +559,41 @@
             </objects>
             <point key="canvasLocation" x="1542.0289855072465" y="112.50000000000001"/>
         </scene>
+        <!--Common Controller-->
+        <scene sceneID="JZf-7w-5b4">
+            <objects>
+                <viewController id="nnl-Kh-bOX" customClass="CommonController" customModule="Play_Good_Music" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vmc-na-igA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWP-AZ-NzW">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NI4-AG-MsN" firstAttribute="bottom" secondItem="bWP-AZ-NzW" secondAttribute="bottom" id="NEA-QE-NCR"/>
+                            <constraint firstItem="bWP-AZ-NzW" firstAttribute="leading" secondItem="NI4-AG-MsN" secondAttribute="leading" id="pHE-Pv-z8I"/>
+                            <constraint firstItem="NI4-AG-MsN" firstAttribute="trailing" secondItem="bWP-AZ-NzW" secondAttribute="trailing" id="sVw-aI-jQU"/>
+                            <constraint firstItem="bWP-AZ-NzW" firstAttribute="top" secondItem="NI4-AG-MsN" secondAttribute="top" id="tK4-7c-ggg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NI4-AG-MsN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="eum-n5-noo"/>
+                    <connections>
+                        <outlet property="webView" destination="bWP-AZ-NzW" id="yf2-N4-Wyn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6ei-Bw-ZlR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1542" y="871"/>
+        </scene>
         <!--Player View Controller-->
         <scene sceneID="okt-Q5-87E">
             <objects>
@@ -861,24 +897,24 @@
             <point key="canvasLocation" x="2268" y="1541"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="checkmark.square" catalog="system" width="64" height="56"/>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
+        <image name="circle.fill" catalog="system" width="64" height="60"/>
+        <image name="facebook-btn" width="120" height="120"/>
+        <image name="forward.end" catalog="system" width="64" height="60"/>
+        <image name="forward.end.fill" catalog="system" width="64" height="50"/>
+        <image name="gobackward.10" catalog="system" width="60" height="64"/>
+        <image name="google_btn" width="120" height="120"/>
+        <image name="pause.fill" catalog="system" width="58" height="64"/>
+        <image name="play.fill" catalog="system" width="58" height="64"/>
+        <image name="player_play" width="100" height="90"/>
+        <image name="splash" width="360" height="640"/>
+        <image name="square" catalog="system" width="64" height="56"/>
+        <image name="viewfinder" catalog="system" width="64" height="56"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rXJ-7y-dx2"/>
         <segue reference="4i0-qh-sOF"/>
     </inferredMetricsTieBreakers>
-    <resources>
-        <image name="checkmark.square" catalog="system" width="128" height="114"/>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
-        <image name="circle.fill" catalog="system" width="128" height="121"/>
-        <image name="facebook-btn" width="120" height="120"/>
-        <image name="forward.end" catalog="system" width="128" height="120"/>
-        <image name="forward.end.fill" catalog="system" width="128" height="102"/>
-        <image name="gobackward.10" catalog="system" width="121" height="128"/>
-        <image name="google_btn" width="120" height="120"/>
-        <image name="pause.fill" catalog="system" width="116" height="128"/>
-        <image name="play.fill" catalog="system" width="116" height="128"/>
-        <image name="player_play" width="100" height="90"/>
-        <image name="splash" width="360" height="640"/>
-        <image name="square" catalog="system" width="128" height="114"/>
-        <image name="viewfinder" catalog="system" width="128" height="114"/>
-    </resources>
 </document>

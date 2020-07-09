@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4967327956FB90A5ED3817D6 /* Pods_Play_Good_Music_Play_Good_MusicUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59A44A0FA65765037CE0CDA6 /* Pods_Play_Good_Music_Play_Good_MusicUITests.framework */; };
 		6ABAB0367316026C085DFFF1 /* Pods_Play_Good_Music.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE894BA037DCBCB91BFC753B /* Pods_Play_Good_Music.framework */; };
+		B30B751624B6ECBF00FDDA46 /* CommonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30B751524B6ECBF00FDDA46 /* CommonController.swift */; };
 		B30CBB8A24B0D3BB00D7303A /* PlayerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CBB8924B0D3BB00D7303A /* PlayerVM.swift */; };
 		B30CBB8C24B0D51C00D7303A /* SubscriptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CBB8B24B0D51C00D7303A /* SubscriptionModel.swift */; };
 		B30CBB8E24B0F4B300D7303A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30CBB8D24B0F4B300D7303A /* HeaderView.swift */; };
@@ -88,6 +89,7 @@
 		A01AD65CC9AB15B0A2BF2437 /* Pods-Play Good Music-Play Good MusicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play Good Music-Play Good MusicUITests.release.xcconfig"; path = "Target Support Files/Pods-Play Good Music-Play Good MusicUITests/Pods-Play Good Music-Play Good MusicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A5F408B4DE22F256E65F857E /* Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig"; path = "Target Support Files/Pods-PlayGoodMusic-PlayGoodMusicUITests/Pods-PlayGoodMusic-PlayGoodMusicUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A619CAD0E94ABCD83BC1E0E2 /* Pods-Play Good Music.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Play Good Music.debug.xcconfig"; path = "Target Support Files/Pods-Play Good Music/Pods-Play Good Music.debug.xcconfig"; sourceTree = "<group>"; };
+		B30B751524B6ECBF00FDDA46 /* CommonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonController.swift; sourceTree = "<group>"; };
 		B30CBB8924B0D3BB00D7303A /* PlayerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerVM.swift; sourceTree = "<group>"; };
 		B30CBB8B24B0D51C00D7303A /* SubscriptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionModel.swift; sourceTree = "<group>"; };
 		B30CBB8D24B0F4B300D7303A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				B3D460BB249E5FB200DA2F19 /* LiveEventsViewController.swift */,
 				B3F9E61824A117B500A174EF /* SideMenuViewController.swift */,
 				B33D997524A780A100CE0EA9 /* PlayerViewController.swift */,
+				B30B751524B6ECBF00FDDA46 /* CommonController.swift */,
 				B320108624B07B45007C5882 /* Profile */,
 			);
 			path = Controllers;
@@ -400,6 +403,7 @@
 				B360F15924968034001669E6 /* Frameworks */,
 				B360F15A24968034001669E6 /* Resources */,
 				73030438B7311DDB005A5BA4 /* [CP] Embed Pods Frameworks */,
+				4A52878BB770BF375A22BF16 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -438,6 +442,7 @@
 				B360F17A24968038001669E6 /* Frameworks */,
 				B360F17B24968038001669E6 /* Resources */,
 				C6AE23AB8DC8C3D513762078 /* [CP] Embed Pods Frameworks */,
+				DF66C81A398A7E498A21EE3C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -549,6 +554,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		4A52878BB770BF375A22BF16 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Play Good Music/Pods-Play Good Music-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Play Good Music/Pods-Play Good Music-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Play Good Music/Pods-Play Good Music-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		73030438B7311DDB005A5BA4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -603,6 +625,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF66C81A398A7E498A21EE3C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Play Good Music-Play Good MusicUITests/Pods-Play Good Music-Play Good MusicUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Play Good Music-Play Good MusicUITests/Pods-Play Good Music-Play Good MusicUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Play Good Music-Play Good MusicUITests/Pods-Play Good Music-Play Good MusicUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FCCB8237F7C6C611A7D33090 /* [CP] Check Pods Manifest.lock */ = {
@@ -662,6 +701,7 @@
 				B360F19E249681F1001669E6 /* SplashViewController.swift in Sources */,
 				B36B5B18249E6DCA00B56478 /* ListTableCell.swift in Sources */,
 				B3F9E61924A117B500A174EF /* SideMenuViewController.swift in Sources */,
+				B30B751624B6ECBF00FDDA46 /* CommonController.swift in Sources */,
 				B360F16224968034001669E6 /* SceneDelegate.swift in Sources */,
 				B3F9E61524A0AFB700A174EF /* ImageCacheLoader.swift in Sources */,
 				B360F1A224968487001669E6 /* Utils.swift in Sources */,

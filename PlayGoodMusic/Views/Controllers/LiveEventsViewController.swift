@@ -182,7 +182,7 @@ extension LiveEventsViewController : UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toWeb" {
             var url: String?
-            let webController = segue.destination as? CommonWebController
+            let webController = segue.destination as? CommonController
             switch self.selectedMenu {
             case .privacy:
                 url = RequestBuilder.EndPoint.privacyPolicy.path
@@ -192,7 +192,7 @@ extension LiveEventsViewController : UITableViewDelegate {
                 break
             }
             webController?.title = self.selectedMenu?.rawValue
-            webController?.htmlString = url
+            webController?.urlString = url
         } else if segue.identifier == "toProfile" {
             //
         } else {
