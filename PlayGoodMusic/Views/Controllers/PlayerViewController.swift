@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-let streamURL = "http://lmil.live-s.cdn.bitgravity.com/cdn-live/_definst_/lmil/live/aajtak_app.smil/playlist.m3u8"
+//let streamURL = "http://lmil.live-s.cdn.bitgravity.com/cdn-live/_definst_/lmil/live/aajtak_app.smil/playlist.m3u8"
 
 class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate {
 
@@ -147,7 +147,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate {
     }
     
      func playVideo() {
-        guard let _ = self.urlString, let url = URL(string: streamURL)  else { return }
+        guard let _ = self.urlString, let url = URL(string: urlString ?? "")  else { return }
          videoView.play(with: url)
 
     }

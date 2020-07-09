@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B360F15B24968034001669E6"
-               BuildableName = "PlayGoodMusic.app"
-               BlueprintName = "PlayGoodMusic"
-               ReferencedContainer = "container:PlayGoodMusic.xcodeproj">
+               BuildableName = "Play Good Music.app"
+               BlueprintName = "Play Good Music"
+               ReferencedContainer = "container:Play Good Music.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B360F17124968038001669E6"
-               BuildableName = "PlayGoodMusicTests.xctest"
-               BlueprintName = "PlayGoodMusicTests"
-               ReferencedContainer = "container:PlayGoodMusic.xcodeproj">
+               BuildableName = "Play Good MusicTests.xctest"
+               BlueprintName = "Play Good MusicTests"
+               ReferencedContainer = "container:Play Good Music.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B360F17C24968038001669E6"
-               BuildableName = "PlayGoodMusicUITests.xctest"
-               BlueprintName = "PlayGoodMusicUITests"
-               ReferencedContainer = "container:PlayGoodMusic.xcodeproj">
+               BuildableName = "Play Good MusicUITests.xctest"
+               BlueprintName = "Play Good MusicUITests"
+               ReferencedContainer = "container:Play Good Music.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B360F15B24968034001669E6"
-            BuildableName = "PlayGoodMusic.app"
-            BlueprintName = "PlayGoodMusic"
-            ReferencedContainer = "container:PlayGoodMusic.xcodeproj">
+            BuildableName = "Play Good Music.app"
+            BlueprintName = "Play Good Music"
+            ReferencedContainer = "container:Play Good Music.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -82,9 +82,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B360F15B24968034001669E6"
-            BuildableName = "PlayGoodMusic.app"
-            BlueprintName = "PlayGoodMusic"
-            ReferencedContainer = "container:PlayGoodMusic.xcodeproj">
+            BuildableName = "Play Good Music.app"
+            BlueprintName = "Play Good Music"
+            ReferencedContainer = "container:Play Good Music.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
