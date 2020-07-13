@@ -14,7 +14,14 @@ import GoogleCast
 
 class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCKSessionManagerListener {
 
+    @IBOutlet weak var castingLbl: UIButton! {
+        didSet {
+            self.castingLbl.layer.cornerRadius = 5
+        }
+    }
+    @IBOutlet weak var thumbnailView: UIView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var thumbnailImagev: UIImageView!
     @IBOutlet weak var videoView: VideoView!
     
     public var urlString: String?
@@ -25,6 +32,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     private var isLive:Bool = false
     private var curPlayerStatus: AVPlayerItem.Status?
     private var playerInLandscape: Bool = false
+    private var isVideoPlayingOnClient: Bool = false
     private var playerVM = PlayerVM()
     private var sessionManager: GCKSessionManager!
     
@@ -45,6 +53,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     var isAllwedToPlay: Bool = false
     var count = 60.0
     var isSubscribedUser: Bool = false
+    var isCasting: Bool = false
     private var miniMediaControlsViewController: GCKUIMiniMediaControlsViewController!
     var subscriptionModel: SubscriptionModel?
     override func viewDidLoad() {
@@ -56,18 +65,66 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
         self.addTapGesture()
         self.view.bringSubviewToFront(self.backButton)
         self.getUserActivePacks()
+        self.addCastObservers()
     }
-    private func createChromeCastMediaContainer() {
-        mediaView = UIView(frame: CGRect(x: 0, y: self.view.frame.height - 70 - (UIApplication.shared.windows.first?.safeAreaInsets.bottom)!, width: self.view.frame.width, height: 70))
+    
+    
+    func addCastObservers() {
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.chromeCastConnected),
+        name: NSNotification.Name.gckCastStateDidChange,
+        object: GCKCastContext.sharedInstance())
         
-        self.view.addSubview(mediaView!)
         
-        let castContext = GCKCastContext.sharedInstance()
-        sessionManager.add(self)
-        miniMediaControlsViewController = castContext.createMiniMediaControlsViewController()
-        miniMediaControlsViewController.delegate = self
-        updateControlBarsVisibility(shouldAppear: true)
-        installViewController(miniMediaControlsViewController, inContainerView: mediaView!)
+    }
+    
+    @objc func chromeCastConnected(_ notif: NotificationCenter) {
+//        let cast  = notif
+        if GCKCastContext.sharedInstance().castState == .connected {
+            self.videoView.pause()
+            self.configureMetaData()
+            self.isCasting = true
+            
+            
+        } else if GCKCastContext.sharedInstance().castState == .notConnected  {
+            self.isCasting = false
+            self.mediaView.isHidden = true
+        }
+        self.hideUnHideThumbnailView(self.isCasting)
+    }
+    
+    func hideUnHideThumbnailView(_ status: Bool) {
+        if self.isCasting {
+            self.thumbnailView.isHidden = false
+            let eventInfo = self.videoList?[selectedIndex ?? 0]
+            DispatchQueue.main.async {
+                let imageLoader = ImageCacheLoader()
+                if let urlString = eventInfo?.thumbnail.small {
+                    imageLoader.fetchImage(imagePath: urlString) { (image) in
+                        self.thumbnailImagev.image = image
+                    }
+                }
+            }
+            self.videoView.pause()
+        } else {
+            self.thumbnailView.isHidden = true
+        }
+    }
+    
+     private func createChromeCastMediaContainer() {
+        if mediaView == nil {
+            mediaView = UIView(frame: CGRect(x: 0, y: self.view.frame.height - 50 - (UIApplication.shared.windows.first?.safeAreaInsets.bottom)!, width: self.view.frame.width, height: 70))
+                self.view.addSubview(mediaView!)
+            
+            let castContext = GCKCastContext.sharedInstance()
+            sessionManager.add(self)
+            miniMediaControlsViewController = castContext.createMiniMediaControlsViewController()
+            miniMediaControlsViewController.delegate = self
+            updateControlBarsVisibility(shouldAppear: true)
+            installViewController(miniMediaControlsViewController, inContainerView: mediaView!)
+        }
+            
     }
     func installViewController(_ viewController: UIViewController?, inContainerView containerView: UIView) {
         if let viewController = viewController {
@@ -78,13 +135,18 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
         }
     }
     func updateControlBarsVisibility(shouldAppear: Bool = false) {
-        if shouldAppear {
-            mediaView!.isHidden = false
+        if mediaView != nil {
+            if shouldAppear {
+                mediaView!.isHidden = false
+            }
+            UIView.animate(withDuration: 1, animations: { () -> Void in
+                self.view.layoutIfNeeded()
+            })
+            view.setNeedsLayout()
+        } else {
+            self.createChromeCastMediaContainer()
         }
-        UIView.animate(withDuration: 1, animations: { () -> Void in
-            self.view.layoutIfNeeded()
-        })
-        view.setNeedsLayout()
+        
     }
     func getUserActivePacks() {
         LoadingView.showLoader(withTitle: "Please wait...", toView: self.view)
@@ -180,7 +242,16 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     
      func playVideo() {
         guard let _ = self.urlString, let url = URL(string: urlString ?? "")  else { return }
-         videoView.play(with: url)
+        if GCKCastContext.sharedInstance().castState == . connected {
+            self.isCasting = true
+            self.configureMetaData()
+        } else {
+            self.isCasting = false
+            videoView.play(with: url)
+        }
+        self.hideUnHideThumbnailView(self.isCasting)
+        
+         
 
     }
     @objc func tapped(gestureRecognizer: UITapGestureRecognizer) {
@@ -262,6 +333,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     
     @IBAction func cast(_ sender: Any) {
         
+        
     }
 }
 extension PlayerViewController : VideoViewDelegate {
@@ -295,6 +367,13 @@ extension PlayerViewController : VideoViewDelegate {
         DispatchQueue.main.async {
             self.seekBar.value = Float(time.seconds)
         }
+//        if sessionManager.connectionState == .connected && !isCasting{
+//            self.configureMetaData()
+//            self.videoView.pause()
+//        } else if sessionManager.connectionState == .disconnected && isCasting {
+//            self.videoView.play()
+//            self.isCasting = false
+//        }
         
     }
     func seekTo(_ seekDuration: Float64) {
@@ -380,6 +459,7 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 extension PlayerViewController {
+    
     func configureMetaData() {
         if GCKCastContext.sharedInstance().castState == .connected {
             guard  let selectedUrlString = self.urlString else {
@@ -413,6 +493,7 @@ extension PlayerViewController {
             if let request = sessionManager.currentSession?.remoteMediaClient?.loadMedia(mediaInformation) {
                 request.delegate = self
             }
+            isCasting = true
             GCKCastContext.sharedInstance().presentDefaultExpandedMediaControls()
         }
         else {
@@ -421,10 +502,14 @@ extension PlayerViewController {
         
     }
 }
-extension PlayerViewController: GCKRequestDelegate,GCKUIMiniMediaControlsViewControllerDelegate {
+extension PlayerViewController: GCKRequestDelegate,GCKUIMiniMediaControlsViewControllerDelegate,UIViewControllerTransitioningDelegate {
+    
     func requestDidComplete(_ request: GCKRequest) {
         print("request completed")
-        self.configureMetaData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.createChromeCastMediaContainer()
+            self.updateControlBarsVisibility(shouldAppear: true)
+        }
     }
     
     func request(_ request: GCKRequest, didAbortWith abortReason: GCKRequestAbortReason) {
@@ -437,4 +522,5 @@ extension PlayerViewController: GCKRequestDelegate,GCKUIMiniMediaControlsViewCon
     func miniMediaControlsViewController(_ miniMediaControlsViewController: GCKUIMiniMediaControlsViewController, shouldAppear: Bool) {
         updateControlBarsVisibility(shouldAppear: shouldAppear)
     }
+    
 }

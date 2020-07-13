@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import TNSocialNetWorkLogin
 
 class LoginViewController: BaseViewController {
 
@@ -65,71 +64,73 @@ class LoginViewController: BaseViewController {
         }
     }
     
-    private func socialLogin(_ user: TNUser) {
-        let userInfo = ["id": user.userId ?? "","first_name": user.firstName ?? "", "last_name": user.lastName ?? "", "gender": "", "link": "","locale": "", "name": user.name ?? "", "email": user.email ?? "", "location": "","dob": ""]
-        DispatchQueue.main.async {
-            self.model.socialLogin(userInfo, self.selectedSocialLogin ?? SocialLoginType.facebook, completion: {[weak self] (isLoggedIn, error) in
-                DispatchQueue.main.async {
-                    if isLoggedIn {
-                        DispatchQueue.main.async {
-                            Utils.updateUserStatus()
-                            
-                            self?.navigationController?.viewControllers.forEach({ (controller) in
-                                if controller.isKind(of: PlayerViewController.self) {
-                                    self?.navigationController?.popViewController(animated: true)
-                                    return
-                                }
-                            })
-                            
-                            self?.navigateToHome()
-                        }
-                    } else {
-                        self?.showAlert("error", "Failed to Login")
-                    }
-                }  
-            })
-        }
-    }
+//    private func socialLogin(_ user: TNUser) {
+//        let userInfo = ["id": user.userId ?? "","first_name": user.firstName ?? "", "last_name": user.lastName ?? "", "gender": "", "link": "","locale": "", "name": user.name ?? "", "email": user.email ?? "", "location": "","dob": ""]
+//        DispatchQueue.main.async {
+//            self.model.socialLogin(userInfo, self.selectedSocialLogin ?? SocialLoginType.facebook, completion: {[weak self] (isLoggedIn, error) in
+//                DispatchQueue.main.async {
+//                    if isLoggedIn {
+//                        DispatchQueue.main.async {
+//                            Utils.updateUserStatus()
+//
+//                            self?.navigationController?.viewControllers.forEach({ (controller) in
+//                                if controller.isKind(of: PlayerViewController.self) {
+//                                    self?.navigationController?.popViewController(animated: true)
+//                                    return
+//                                }
+//                            })
+//
+//                            self?.navigateToHome()
+//                        }
+//                    } else {
+//                        self?.showAlert("error", "Failed to Login")
+//                    }
+//                }
+//            })
+//        }
+//    }
     
     @IBAction func facebookAction(_ sender: Any) {
-        let permission = TNFacebookPermission()
-        permission.publicProfile = ["email": ["name"]]
+//        let permission = TNFacebookPermission()
+//        permission.publicProfile = ["email": ["name"]]
         self.selectedSocialLogin = .facebook
-        TNAuthenticationManager.shared.obtainAuthentication().signInByFacebook(withReadPermissions: nil, from: nil) {[weak self] (result) in
-               switch result {
-                   case .error(let error):
-                       //Got an error while login.
-                       print(error.localizedDescription)
-                       break
-                   case .cancel:
-                       //When user canceled.
-                       print("the user cancel to login")
-                       break
-                   case .success(let user):
-                       //Login success
-                        self?.socialLogin(user)
-                       break
-               }
-           }
+//        TNAuthenticationManager.shared.obtainAuthentication().signInByFacebook(withReadPermissions: nil, from: nil) {[weak self] (result) in
+//               switch result {
+//                   case .error(let error):
+//                       //Got an error while login.
+//                       print(error.localizedDescription)
+//                       break
+//                   case .cancel:
+//                       //When user canceled.
+//                       print("the user cancel to login")
+//                       break
+//                   case .success(let user):
+//                       //Login success
+//                        self?.socialLogin(user)
+//                       break
+//               }
+//           }
+        
+        
 
     }
     @IBAction func googleAction(_ sender: Any) {
         self.selectedSocialLogin = .google
-        TNAuthenticationManager.shared.obtainAuthentication().signInByGoogle() {[weak self] (result) in
-            switch result {
-                case .error(let error):
-                    //Got an error while login.
-                    print(error.localizedDescription)
-                    break
-                case .cancel:
-                    //When user canceled.
-                    print("the user cancel to login")
-                    break
-                case .success(let user):
-                        self?.socialLogin(user)
-                    break
-            }
-        }
+//        TNAuthenticationManager.shared.obtainAuthentication().signInByGoogle() {[weak self] (result) in
+//            switch result {
+//                case .error(let error):
+//                    //Got an error while login.
+//                    print(error.localizedDescription)
+//                    break
+//                case .cancel:
+//                    //When user canceled.
+//                    print("the user cancel to login")
+//                    break
+//                case .success(let user):
+//                        self?.socialLogin(user)
+//                    break
+//            }
+//        }
 
     }
 }

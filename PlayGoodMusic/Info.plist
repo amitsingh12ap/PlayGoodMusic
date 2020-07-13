@@ -79,9 +79,13 @@
 		</dict>
 	</dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
-	<string>We need to access your bluetooth to cast video on chrome cast</string>
+	<string>Allow us to use your bluetooth to help us to cast your video on google chrome cast</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Allow us to use your bluetooth to help us to cast your video on google chrome cast</string>
 	<key>NSCameraUsageDescription</key>
 	<string>Allow us to capture your pictures to set your profile pic</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow us to use your microphone to help us to cast your video on google chrome cast</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allow us to use photo library</string>
 	<key>UIApplicationSceneManifest</key>

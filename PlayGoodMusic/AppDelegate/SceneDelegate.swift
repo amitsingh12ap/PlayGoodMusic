@@ -34,6 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate,GCKLoggerDelegate {
         GCKLogger.sharedInstance().delegate = self
 
         guard let _ = (scene as? UIWindowScene) else { return }
+        
     }
     
     // MARK: - GCKLoggerDelegate
@@ -74,5 +75,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate,GCKLoggerDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+
 }
 
