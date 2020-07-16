@@ -63,7 +63,7 @@ class LiveEventsViewController: BaseViewController,SideMenuDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.sideMenuController = storyboard.instantiateViewController(withIdentifier: "sideMenu") as? SideMenuViewController
         sideMenuController?.delegate = self
-        let window = UIApplication.shared.windows.first!
+        let window = UIApplication.shared.keyWindow!
         if let sideMenuView = sideMenuController?.view {
             window.addSubview(sideMenuView);
         }
@@ -71,7 +71,7 @@ class LiveEventsViewController: BaseViewController,SideMenuDelegate {
      
     }
     private func removeSideMenu() {
-        let window = UIApplication.shared.windows.first!
+        let window = UIApplication.shared.keyWindow!
         for view in window.subviews {
             if view == self.sideMenuController?.view {
                 view.removeFromSuperview()

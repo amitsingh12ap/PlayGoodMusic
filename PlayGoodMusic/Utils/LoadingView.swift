@@ -12,7 +12,7 @@ class LoadingView: UIView {
     
     static var activityIndicator = UIActivityIndicatorView()
     static var strLabel = UILabel()
-    static let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
+    static let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     static let containerView = UIView()
     
     private static func addLoadingView(_ view: UIView, withTitle title: String) {
@@ -34,7 +34,7 @@ class LoadingView: UIView {
         effectView.layer.masksToBounds = true
 //        effectView.dropShadow()
         
-        activityIndicator = UIActivityIndicatorView(style: .medium)
+        activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.frame = CGRect(x: 0, y: 0, width: 46, height: 46)
         activityIndicator.startAnimating()
         

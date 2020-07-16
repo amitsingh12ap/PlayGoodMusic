@@ -78,7 +78,7 @@ extension Utils {
     
     static func navigateToLogin( controller: UIViewController) {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let loginScreen = storyBoard.instantiateViewController(identifier: "Login") as! LoginViewController
+        let loginScreen = storyBoard.instantiateViewController(withIdentifier: "Login") as! LoginViewController
         if controller.navigationController?.viewControllers.contains(LoginViewController()) ?? false {
             controller.navigationController?.popToViewController(loginScreen, animated: true)
         } else {

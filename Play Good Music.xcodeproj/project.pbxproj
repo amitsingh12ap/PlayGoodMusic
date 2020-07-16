@@ -53,6 +53,7 @@
 		B360F1AA24969095001669E6 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B360F1A924969095001669E6 /* LoginViewController.swift */; };
 		B36B5B18249E6DCA00B56478 /* ListTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36B5B16249E6DCA00B56478 /* ListTableCell.swift */; };
 		B36B5B19249E6DCA00B56478 /* ListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B36B5B17249E6DCA00B56478 /* ListTableCell.xib */; };
+		B3CDF68724C0AF7E0034169C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3CDF68624C0AF7E0034169C /* WebKit.framework */; };
 		B3D460BA249E59C700DA2F19 /* LiveEventsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D460B9249E59C700DA2F19 /* LiveEventsVM.swift */; };
 		B3D460BC249E5FB200DA2F19 /* LiveEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D460BB249E5FB200DA2F19 /* LiveEventsViewController.swift */; };
 		B3F9E61324A0A7C500A174EF /* LiveEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F9E61224A0A7C500A174EF /* LiveEventsModel.swift */; };
@@ -151,6 +152,7 @@
 		B360F1A924969095001669E6 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B36B5B16249E6DCA00B56478 /* ListTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableCell.swift; sourceTree = "<group>"; };
 		B36B5B17249E6DCA00B56478 /* ListTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableCell.xib; sourceTree = "<group>"; };
+		B3CDF68624C0AF7E0034169C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		B3D460B9249E59C700DA2F19 /* LiveEventsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventsVM.swift; sourceTree = "<group>"; };
 		B3D460BB249E5FB200DA2F19 /* LiveEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventsViewController.swift; sourceTree = "<group>"; };
 		B3F9E61224A0A7C500A174EF /* LiveEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveEventsModel.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3CDF68724C0AF7E0034169C /* WebKit.framework in Frameworks */,
 				6ABAB0367316026C085DFFF1 /* Pods_Play_Good_Music.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +216,7 @@
 		7A02B25979A4007DAAE7B481 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3CDF68624C0AF7E0034169C /* WebKit.framework */,
 				B30B752F24B6F57000FDDA46 /* Foundation.framework */,
 				B30B752D24B6F55F00FDDA46 /* CoreText.framework */,
 				B30B752B24B6F55800FDDA46 /* CoreMedia.framework */,
@@ -910,10 +914,10 @@
 				CODE_SIGN_ENTITLEMENTS = "Play Good MusicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_TEAM = JSN8GHH7P2;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -935,10 +939,10 @@
 				CODE_SIGN_ENTITLEMENTS = "Play Good MusicRelease.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.0;
+				CURRENT_PROJECT_VERSION = 1.1.1;
 				DEVELOPMENT_TEAM = JSN8GHH7P2;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

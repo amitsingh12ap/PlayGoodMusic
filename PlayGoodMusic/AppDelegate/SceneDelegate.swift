@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManager
 import GoogleCast
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate,GCKLoggerDelegate {
 
     var window: UIWindow?
