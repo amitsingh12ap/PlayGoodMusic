@@ -14,7 +14,7 @@ import OneSignal
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,GCKLoggerDelegate {
     var window: UIWindow?
-    let kReceiverAppID = kGCKDefaultMediaReceiverApplicationID
+    let kReceiverAppID = "B5877170"
     let kDebugLoggingEnabled = true
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

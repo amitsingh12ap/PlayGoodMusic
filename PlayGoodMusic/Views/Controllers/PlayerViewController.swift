@@ -190,9 +190,6 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
                 }
                 return
             }
-            //            let liveData = self?.videoList?[self?.selectedIndex ?? 0]
-            //            let subscribedChannels = packages as? [String]
-            
             self?.validateSubscription(model)
         }
     }
@@ -209,8 +206,11 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     private func validateChannel()->Bool {
         if let subscriptionModel = self.subscriptionModel {
             if subscriptionModel.result.packagesList.count > 0 {
-                if let channelId = self.videoList?[self.selectedIndex ?? 0].channelid {
-                    if subscriptionModel.result.packagesList.contains(channelId) {
+                if let channelId = self.videoList?[self.selectedIndex ?? 0].id {
+                    print("\(channelId)")
+                    if subscriptionModel.result.packagesList.contains(where: { (model) -> Bool in
+                        model.packageID == channelId
+                    }) {
                         self.isSubscribedUser = true
                         return true
                     }
@@ -489,9 +489,13 @@ extension PlayerViewController: UITableViewDelegate, UITableViewDataSource {
         DispatchQueue.main.async {
             if self.selectedIndex != indexPath.row {
                 self.timer?.invalidate()
-                self.scheduleTimer()
+                print(self.videoList?[self.selectedIndex ?? 0].id ?? "no id")
+                if !self.validateChannel() {
+                    self.scheduleTimer()
+                }
                 self.selectedIndex = indexPath.row
                 self.validateAndPlay()
+                
             }
             
         }

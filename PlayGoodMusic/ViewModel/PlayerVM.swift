@@ -13,7 +13,7 @@ struct PlayerVM:Request {
         if let loggedInData = Utils.getUserInfo() {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(LoginModel.self, from: loggedInData) {
-                let path = RequestBuilder.EndPoint.userPackage(loadedPerson.loginResponseResult?.email ?? "", loadedPerson.loginResponseResult?.username ?? "").path
+                let path = RequestBuilder.EndPoint.userPackage(loadedPerson.loginResponseResult?.email ?? "", "\(loadedPerson.loginResponseResult?.id ?? 0)").path
                 if let url = URL(string: path) {
                     let request = URLRequest(url: url)
                     self.request(request, SubscriptionModel.self) { (result) in
