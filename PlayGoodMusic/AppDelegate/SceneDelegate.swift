@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import IQKeyboardManager
+//import IQKeyboardManager
 import GoogleCast
 
 @available(iOS 13.0, *)
@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate,GCKLoggerDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         
-        IQKeyboardManager.shared().isEnabled = true
+//        IQKeyboardManager.shared().isEnabled = true
         
         let castoptions = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria(applicationID: kReceiverAppID))
         castoptions.physicalVolumeButtonsWillControlDeviceVolume = true

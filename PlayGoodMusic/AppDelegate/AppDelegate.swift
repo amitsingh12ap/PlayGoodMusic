@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import IQKeyboardManager
+//import IQKeyboardManager
 import GoogleCast
+import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,GCKLoggerDelegate {
@@ -19,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GCKLoggerDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 //        TNAuthenticationManager.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        IQKeyboardManager.shared().isEnabled = true
+        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+//        IQKeyboardManager.shared().isEnabled = true
         
         let castoptions = GCKCastOptions(discoveryCriteria: GCKDiscoveryCriteria(applicationID: kReceiverAppID))
         castoptions.physicalVolumeButtonsWillControlDeviceVolume = true
@@ -31,6 +32,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate,GCKLoggerDelegate {
         logFilter.minimumLevel = .verbose
         GCKLogger.sharedInstance().filter = logFilter
         GCKLogger.sharedInstance().delegate = self
+        
+        
+        //START OneSignal initialization code
+        let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false, kOSSettingsKeyInAppLaunchURL: false]
+        
+        // Replace 'YOUR_ONESIGNAL_APP_ID' with your OneSignal App ID.
+        OneSignal.initWithLaunchOptions(launchOptions,
+          appId: "ede26cbf-f0e8-4f18-ac90-bc292978a722",
+          handleNotificationAction: nil,
+          settings: onesignalInitSettings)
+
+        OneSignal.inFocusDisplayType = OSNotificationDisplayType.notification;
+
+        // The promptForPushNotifications function code will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 6)
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+          print("User accepted notifications: \(accepted)")
+        })
+        
+        //END OneSignal initializataion code
         
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()

@@ -27,6 +27,9 @@ struct PlayerVM:Request {
                     }
                 }
             }
+        } else {
+            let error = ASError.apiError("not loggedIn")
+            completion(nil,error)
         }
     }
 }

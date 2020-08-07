@@ -78,10 +78,10 @@ class BaseViewController: UIViewController {
     }
     
     private func addMusicImage() {
-        let logo = UIImage(named: "PGM.png")
-        let imageView = UIImageView(image:logo)
-        imageView.contentMode = .scaleAspectFit
-        self.navigationItem.titleView = imageView
+//        let logo = UIImage(named: "PGM.png")
+//        let imageView = UIImageView(image:logo)
+//        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.title = "Play Good Music"
     }
     
     @objc func updatePlayerView(_ isLandscape: Bool) {
@@ -115,6 +115,7 @@ extension BaseViewController: UINavigationControllerDelegate {
         else if viewController.isKind(of: LiveEventsViewController.self) {
             addMusicImage()
             addMenuOption()
+            self.navigationController?.navigationBar.isHidden = false
             self.navigationItem.setHidesBackButton(true, animated: true);
         } else if viewController.isKind(of: ProfileViewController.self) {
             self.navigationItem.setHidesBackButton(false, animated: true);

@@ -24,6 +24,7 @@ struct RequestBuilder {
         case liveEvents(String)
         case terms
         case privacyPolicy
+        case session
         case userPackage(String,String)
         var path:String {
             switch self {
@@ -47,7 +48,10 @@ struct RequestBuilder {
                 return self.fixUrlString("\(MasterApiListHelper.shared.masterUrlInfo?.result?.privacy_policy ?? "")\(kToken)")
             case .userPackage(let userName, let userID):
                 return self.fixUrlString("\(MasterApiListHelper.shared.masterUrlInfo?.result?.subs_user_subscriptions ?? "")\(kToken)/device/iOS/uid/\(userID)/username/\(userName)")
+            case .session:
+                return self.fixUrlString(MasterApiListHelper.shared.masterUrlInfo?.result?.csession ?? "")+kToken
             }
+            
         }
         
         private func fixUrlString(_ string: String)-> String {

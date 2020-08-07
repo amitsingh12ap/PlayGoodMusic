@@ -52,6 +52,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     var timer: Timer?
     var isAllwedToPlay: Bool = false
     var count = 60.0
+    var currenttimerDuration = 60.0
     var isSubscribedUser: Bool = false
     var isCasting: Bool = false
     private var miniMediaControlsViewController: GCKUIMiniMediaControlsViewController!
@@ -68,7 +69,29 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
         self.addCastObservers()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.videoView.pause()
+        if count >= 120 {
+            self.getActivePacksFromApi {[weak self] (model, error) in
+                if let apiError = error {
+                    print("api error occered while fetching packs\(apiError)")
+                    self?.isSubscribedUser = false
+                } else {
+                    if let subscriptionModel = model {
+                        self?.subscriptionModel = subscriptionModel
+                    }
+                    if !(self?.validateChannel() ?? false) {
+                        self?.scheduleTimer()
+                        self?.isSubscribedUser = false
+                    } else {
+                        self?.videoView.play()
+                    }
+                }
+            }
+        }
+        
+    }
     func addCastObservers() {
         NotificationCenter.default.addObserver(
         self,
@@ -148,27 +171,38 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
         }
         
     }
-    func getUserActivePacks() {
+    func getActivePacksFromApi(completion:@escaping (SubscriptionModel?, ASError? )->Void) {
         LoadingView.showLoader(withTitle: "Please wait...", toView: self.view)
-        self.playerVM.getUserSubscription {[weak self] (model, error) in
+        self.playerVM.getUserSubscription {(model, error) in
             LoadingView.hideLoader()
+            completion(model,error)
+        }
+    }
+    
+    func getUserActivePacks() {
+        self.getActivePacksFromApi {[weak self] (model, error) in
             if let apiError = error {
-                self?.showAlert("Error", apiError.localizedDescription)
+                if apiError.localizedDescription == "not loggedIn" {
+                    self?.scheduleTimer()
+                    self?.isSubscribedUser = false
+                } else {
+                    self?.showAlert("Error", apiError.localizedDescription)
+                }
                 return
             }
-//            let liveData = self?.videoList?[self?.selectedIndex ?? 0]
-//            let subscribedChannels = packages as? [String]
+            //            let liveData = self?.videoList?[self?.selectedIndex ?? 0]
+            //            let subscribedChannels = packages as? [String]
             
-            if let subscriptionModel = model {
-                self?.subscriptionModel = subscriptionModel
-                
-            }
-            if !(self?.validateChannel() ?? false) {
-                self?.scheduleTimer()
-                self?.isSubscribedUser = false
-            }
-            
-            
+            self?.validateSubscription(model)
+        }
+    }
+    func validateSubscription(_ model: SubscriptionModel?) {
+        if let subscriptionModel = model {
+            self.subscriptionModel = subscriptionModel
+        }
+        if !(self.validateChannel()) {
+            self.scheduleTimer()
+            self.isSubscribedUser = false
         }
     }
     
@@ -211,7 +245,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     
     private func scheduleTimer() {
         DispatchQueue.main.async {
-            self.timer = Timer.scheduledTimer(timeInterval: self.count, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
+            self.timer = Timer.scheduledTimer(timeInterval: self.currenttimerDuration, target: self, selector: #selector(self.fireTimer), userInfo: nil, repeats: true)
         }
         
     }
@@ -220,6 +254,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
         if count < 120 {
             self.showAlert("Message", "you currently using 2 minutes free content access. Your access will remove after \(120 - count) second.")
             count += 30
+            self.currenttimerDuration = 30
             timer?.invalidate()
             self.scheduleTimer()
         } else {
@@ -258,6 +293,9 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
         self.hideAllPlayerButtons(!isAllButtonsHide)
     }
     @IBAction func playAction(_ sender: Any) {
+        if count >= 120 && !isSubscribedUser {
+            return
+        }
         self.playBtn.isSelected = !self.playBtn.isSelected
         if let status = self.curPlayerStatus {
             if status == .readyToPlay {
@@ -313,6 +351,7 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     
     @IBAction func popAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+        self.navigationController?.navigationBar.isHidden = false
     }
     private func hideUnhideNextButton() {
         guard let index = self.selectedIndex, index + 1 < self.videoList?.count ?? 0  else {

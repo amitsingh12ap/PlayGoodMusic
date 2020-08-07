@@ -39,6 +39,15 @@ class SplashViewController: BaseViewController {
 
 }
 extension SplashViewController: Request {
+//    func checkSession() {
+////        http://15.206.0.197:9008/automatorapi/v8/customer/session/token/5ec141697b27f
+//        LoadingView.showLoader(withTitle: "Please wait...", toView: self.view)
+//        let path = RequestBuilder.EndPoint.session.path
+//        if let url = URL(string: path) {
+//            let request = URLRequest(url: url)
+//            self.request(<#T##request: URLRequest##URLRequest#>, <#T##model: (Decodable & Encodable).Protocol##(Decodable & Encodable).Protocol#>, completion: <#T##((Result<(Decodable & Encodable)?, ASError>) -> Void)##((Result<(Decodable & Encodable)?, ASError>) -> Void)##(Result<(Decodable & Encodable)?, ASError>) -> Void#>)
+//        }
+//    }
     func getMasterApi() {
         LoadingView.showLoader(withTitle: "Please wait...", toView: self.view)
         let path = RequestBuilder.EndPoint.master.path
@@ -49,8 +58,10 @@ extension SplashViewController: Request {
                 case.success(let model):
                     LoadingView.hideLoader()
                     if let masterUrlModel = model {
-                        self?.isApifinished = true
+                        
                         MasterApiListHelper.shared.updateMasterUrlModel(masterUrlModel)
+                        self?.isApifinished = true
+//                        let path = RequestBuilder.EndPoint.session.path
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
