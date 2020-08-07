@@ -17,7 +17,7 @@ struct SubscriptionModel: Codable {
 // MARK: - Result
 struct SubscriptionResult: Codable {
     let freeDays, gift, isSubscriber: String
-    let packagesList: [PackagesList]
+//    let packagesList: [PackagesList]
     let subsLiveItem: [String]
     let subsVODItem: [String]
 
@@ -25,7 +25,7 @@ struct SubscriptionResult: Codable {
         case freeDays = "free_days"
         case gift
         case isSubscriber = "is_subscriber"
-        case packagesList = "packages_list"
+//        case packagesList = "packages_list"
         case subsLiveItem = "subs_live_item"
         case subsVODItem = "subs_vod_item"
     }

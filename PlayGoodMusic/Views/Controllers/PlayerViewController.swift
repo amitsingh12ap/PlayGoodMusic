@@ -205,25 +205,26 @@ class PlayerViewController: BaseViewController, UIGestureRecognizerDelegate, GCK
     
     private func validateChannel()->Bool {
         if let subscriptionModel = self.subscriptionModel {
-            if subscriptionModel.result.packagesList.count > 0 {
+//            if subscriptionModel.result.packagesList.count > 0 {
+//                if let channelId = self.videoList?[self.selectedIndex ?? 0].id {
+//                    print("\(channelId)")
+//                    if subscriptionModel.result.packagesList.contains(where: { (model) -> Bool in
+//                        model.packageID == channelId
+//                    }) {
+//                        self.isSubscribedUser = true
+//                        return true
+//                    }
+//                }
+//            } else
+            if subscriptionModel.result.subsLiveItem.count > 0 {
                 if let channelId = self.videoList?[self.selectedIndex ?? 0].id {
-                    print("\(channelId)")
-                    if subscriptionModel.result.packagesList.contains(where: { (model) -> Bool in
-                        model.packageID == channelId
-                    }) {
-                        self.isSubscribedUser = true
-                        return true
-                    }
-                }
-            } else if subscriptionModel.result.subsLiveItem.count > 0 {
-                if let channelId = self.videoList?[self.selectedIndex ?? 0].channelid {
                     if subscriptionModel.result.subsLiveItem.contains(channelId) {
                         self.isSubscribedUser = true
                         return true
                     }
                 }
             } else if subscriptionModel.result.subsVODItem.count > 0 {
-                if let channelId = self.videoList?[self.selectedIndex ?? 0].channelid {
+                if let channelId = self.videoList?[self.selectedIndex ?? 0].id {
                     if subscriptionModel.result.subsVODItem.contains(channelId) {
                         self.isSubscribedUser = true
                         return true

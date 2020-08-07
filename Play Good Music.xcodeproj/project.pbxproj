@@ -948,7 +948,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Play Good MusicDebug.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.3;
+				CURRENT_PROJECT_VERSION = 1.1.4;
 				DEVELOPMENT_TEAM = JSN8GHH7P2;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -974,7 +974,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Play Good MusicRelease.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.3;
+				CURRENT_PROJECT_VERSION = 1.1.4;
 				DEVELOPMENT_TEAM = JSN8GHH7P2;
 				INFOPLIST_FILE = PlayGoodMusic/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
