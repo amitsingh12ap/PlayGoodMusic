@@ -60,8 +60,21 @@ extension SplashViewController: Request {
                     if let masterUrlModel = model {
                         
                         MasterApiListHelper.shared.updateMasterUrlModel(masterUrlModel)
-                        self?.isApifinished = true
-//                        let path = RequestBuilder.EndPoint.session.path
+                        let sessionPath = RequestBuilder.EndPoint.session.path
+                        if let url = URL(string: sessionPath) {
+                            var request = URLRequest(url: url)
+                            let params = RequestBuilder.Parameters.commonParams.path
+                            do {
+                               try request.setMultipartFormData(params, encoding: .utf8)
+                            } catch {
+                                print("failed")
+                            }
+                            request.httpMethod = HttpMethod.post.rawValue
+                            self?.request(request, RegistrationModel.self, completion: { (result) in
+                                self?.isApifinished = true
+                            })
+                        }
+                        
                     }
                 case .failure(let error):
                     DispatchQueue.main.async {
